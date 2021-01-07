@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 import TodoList from './TodoList'
 
 const Todo=()=>{
+  const [name,setName]=useState('najah')
   const [todos,setTodos]=useState([
     {
     id: 1,
@@ -35,8 +36,8 @@ setTodos(newTodos)
 
 useEffect(()=>{
   console.log('use effect running')
-  console.log(todos)
-})
+  console.log(name)
+},[name])
   return(
 <div className="showcase">
   Todo Home Page
@@ -45,6 +46,8 @@ useEffect(()=>{
   {/*  reuse components */}
   {/* <TodoList todos={todos.filter((todo)=> todo.completed===true)} title="Complete Todos"/>
   <TodoList todos={todos.filter((todo)=> todo.completed===false)} title="Un Complete Todos"/> */}
+  <p>{name}</p>
+  <button onClick={()=>{setName('najah ahmed')}}>Full name</button>
 </div>
   )
 }
