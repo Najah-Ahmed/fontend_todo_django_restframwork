@@ -1,4 +1,4 @@
-const TodoList=({todos,title,handleDelete})=>{
+const TodoList=({todos,title})=>{
  
   return(
     <div className="todo__list">
@@ -10,7 +10,7 @@ const TodoList=({todos,title,handleDelete})=>{
       </h2>
       <p>{todo.description}</p>
       <h6>{todo.completed}</h6>
-      <button className="delete" onClick={()=>handleDelete(todo.id)}>Delete Todo</button>
+      {/* <button className="delete" onClick={()=>handleDelete(todo.id)}>Delete Todo</button> */}
     </div>
   ))}
     </div>
