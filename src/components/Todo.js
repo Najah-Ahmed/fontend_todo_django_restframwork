@@ -3,49 +3,36 @@ import TodoList from './TodoList'
 
 const Todo=()=>{
   const [todos,setTodos]=useState(null)
-  //   [
-  //   {
-  //   id: 1,
-  //   title: "Go to Market",
-  //   description: "Buy ingredients to prepare dinner",
-  //   completed: true
-  // },
-  // {
-  //   id: 2,
-  //   title: "Study",
-  //   description: "Read Algebra and History textbook for upcoming test",
-  //   completed: false
-  // },
-  // {
-  //   id: 3,
-  //   title: "Sally's books",
-  //   description: "Go to library to rent sally's books",
-  //   completed: true
-  // },
-  // {
-  //   id: 4,
-  //   title: "Article",
-  //   description: "Write article on how to use django with react",
-  //   completed: false
-  // }];
-//   const handleDelete= (id)=>{
-// const newTodos=todos.filter((todo) => todo.id!== id )
-// setTodos(newTodos)
-//   }
-  // depence array will run when depence is call inside [] if there no depence remove []
-
+  const [isLoading,setIsLoading]=useState(true)
+  const [error,setError]=useState(null)
+ 
 useEffect(()=>{
+  setTimeout(()=>{
+    fetch(' http://localhost:8000/api/todos/')
+    .then(res=>{ 
+      if(!res.ok){
+        throw Error("Error ... Count fetch data")
+      }
+      return res.json()})
+    .then(data => {
+    setTodos(data)
+    setIsLoading(false)
+    setError(null)
+  })
+    .catch(err=>{
+      setError(err.message)
+      setIsLoading(false)
+    })
+  },1000)
  
 
-  fetch(' http://localhost:8000/api/todos/')
-    .then(res=>{ return res.json()})
-    .then(data => {
-    setTodos(data)})
-    .catch(err=>{console.log(err)})
+
 },[])
   return(
 <div className="showcase">
   Todo Home Page
+  {error && <div>{error}</div>}
+  {isLoading && <div>Loading....</div>}
 
   {todos && <TodoList todos={todos} title="All Todos!" />}
   {/*  reuse components */}
