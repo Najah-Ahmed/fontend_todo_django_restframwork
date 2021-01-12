@@ -1,33 +1,12 @@
-import {useState,useEffect} from 'react'
+
 import TodoList from './TodoList'
+import useFetch from './useFetch'
 
 const Todo=()=>{
-  const [todos,setTodos]=useState(null)
-  const [isLoading,setIsLoading]=useState(true)
-  const [error,setError]=useState(null)
- 
-useEffect(()=>{
-  setTimeout(()=>{
-    fetch(' http://localhost:8000/api/todos/')
-    .then(res=>{ 
-      if(!res.ok){
-        throw Error("Error ... Count fetch data")
-      }
-      return res.json()})
-    .then(data => {
-    setTodos(data)
-    setIsLoading(false)
-    setError(null)
-  })
-    .catch(err=>{
-      setError(err.message)
-      setIsLoading(false)
-    })
-  },1000)
- 
 
+const url ='http://localhost:8000/api/todos/'
+const {data:todos,isLoading,error}=useFetch(url)
 
-},[])
   return(
 <div className="showcase">
   Todo Home Page
