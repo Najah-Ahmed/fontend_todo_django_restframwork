@@ -4,7 +4,8 @@ import useFetch from './useFetch'
 
 const Todo=()=>{
 
-const url ='http://localhost:8000/api/todos/'
+const url ='http://localhost:8000/api/todos'
+// http://localhost:8000/api/todos
 const {data:todos,isLoading,error}=useFetch(url)
 
   return(
