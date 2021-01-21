@@ -17,6 +17,9 @@ function App() {
         <Route exact path="/">
         <Todo/>
         </Route>
+        <Route exact path="/add">
+        <CreateTodo/>
+        </Route>
         <Route exact path="/details/:id">
         <TodoDetails/>
         </Route>
@@ -29,9 +32,7 @@ function App() {
         <Route exact path="/contact">
         <Contact/>
         </Route>
-        <Route exact path="/add">
-        <CreateTodo/>
-        </Route>
+        
       </Switch>
     </div>
    </Router>
