@@ -1,11 +1,29 @@
 import {useParams} from 'react-router-dom'
 import useFetch from './useFetch'
+import {useHistory} from 'react-router-dom'
 
 const TodoDetails=()=>{
-
+const history=useHistory()
   const {id}=useParams()
   const url =`http://localhost:8000/api/todos/details/${id}`
 const {data:todos,isLoading,error}=useFetch(url)
+const deleteHandler=()=>{
+fetch(url,
+  {method:"DELETE",
+  headers:{'Content-Type':'application/json'}
+}
+  ).then(()=>{
+    history.push('/')
+    console.log('deleted blog')
+
+
+  })
+}
+
+
+const updateHandler=()=>{
+  console.log('upated')
+}
     return (
     <div>
       <h1>Todo Details-{id}</h1>
@@ -19,6 +37,11 @@ const {data:todos,isLoading,error}=useFetch(url)
       {todos.completed===true ? <input type="checkbox" name="completed" defaultChecked />
       :
       <input type="checkbox" name="completed" />}
+      <hr/>
+
+      <button onClick={deleteHandler}>Deleted</button>
+      <hr/>
+      <button onClick={updateHandler}>Updated</button>
     </article>
   )}
  

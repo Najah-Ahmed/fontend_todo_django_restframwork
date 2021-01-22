@@ -6,12 +6,12 @@ import About from './components/layouts/About'
 import Services from './components/layouts/Services'
 import Contact from './components/layouts/Contact'
 import CreateTodo from './components/CreateTodo'
-
+import NotFound from './components/NotFound'
 function App() {
   return (
 
    <Router>
-      <div >
+      <div > 
       <Navbar/>
       <Switch>
         <Route exact path="/">
@@ -31,6 +31,9 @@ function App() {
         </Route>
         <Route exact path="/contact">
         <Contact/>
+        </Route>
+        <Route path='*'>
+            <NotFound/>
         </Route>
         
       </Switch>
