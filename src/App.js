@@ -7,6 +7,7 @@ import Services from './components/layouts/Services'
 import Contact from './components/layouts/Contact'
 import CreateTodo from './components/CreateTodo'
 import NotFound from './components/NotFound'
+import UpdateTodo from './components/UpdateTodo'
 function App() {
   return (
 
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path="/details/:id">
         <TodoDetails/>
+        </Route>
+        <Route exact path="/update/:id">
+        <UpdateTodo/>
         </Route>
         <Route exact path="/about">
         <About/>
