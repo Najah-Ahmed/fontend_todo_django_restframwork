@@ -1,4 +1,4 @@
-const Services=()=>{
-  return <div>Services page</div>
-}
-export default Services
+const Services = () => {
+  return <div>Services page</div>;
+};
+export default Services;
