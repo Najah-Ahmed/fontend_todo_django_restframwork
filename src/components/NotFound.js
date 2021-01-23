@@ -1,4 +1,3 @@
-
 import {Link } from 'react-router-dom'
 
 const NotFound = ()=>{
@@ -8,7 +7,7 @@ return (
     <p>
       Not found page 404
     </p>
-    <Link to='/'>Go Back To HomePage ....</Link>
+        <Link to='/'>Go Back To HomePage ....</Link>
   </div>
 )
 }
